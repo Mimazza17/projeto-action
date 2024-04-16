@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Soma</title>
+<title>Calculadora</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -37,20 +37,40 @@
 <body>
 
 <div class="calculator">
-    <h2>Calculadora de Soma</h2>
-    <form id="sumForm">
+    <h2>Calculadora</h2>
+    <form id="calculatorForm">
         <input type="number" id="num1" placeholder="Digite o primeiro número" required><br>
         <input type="number" id="num2" placeholder="Digite o segundo número" required><br>
-        <input type="submit" value="Calcular">
+        <input type="submit" value="Somar">
+        <input type="submit" value="Subtrair">
+        <input type="submit" value="Multiplicar">
+        <input type="submit" value="Dividir">
     </form>
     <div id="result"></div>
 </div>
 
 <script>
-    document.getElementById('sumForm').onsubmit = function() {
+    document.getElementById('calculatorForm').onsubmit = function() {
         var num1 = parseFloat(document.getElementById('num1').value);
         var num2 = parseFloat(document.getElementById('num2').value);
-        var result = num1 + num2;
+        var operation = event.submitter.value;
+        var result;
+        
+        switch(operation) {
+            case 'Somar':
+                result = num1 + num2;
+                break;
+            case 'Subtrair':
+                result = num1 - num2;
+                break;
+            case 'Multiplicar':
+                result = num1 * num2;
+                break;
+            case 'Dividir':
+                result = num1 / num2;
+                break;
+        }
+        
         document.getElementById('result').innerHTML = "Resultado: " + result;
         return false; // Prevent form submission
     };
@@ -58,4 +78,3 @@
 
 </body>
 </html>
-
